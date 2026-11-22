@@ -56,9 +56,11 @@ Found a wrong rate or a better thumb rule? Open an issue or a pull request — r
 
 ## Support
 
-If this tool saved you time, consider supporting the work:
+If this tool saved you time, the best way to support the work is through my Gumroad store — every purchase funds more free tools for engineers:
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-tanmoy016-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/tanmoy016)
+🛠️ [Tantool on Gumroad — BOQ Template Pack, Cost Estimator & more](https://tantool.gumroad.com/)
+
+(Note: Buy Me a Coffee, Ko-fi and GitHub Sponsors can't pay out to Bangladesh — they need Stripe or PayPal — so support goes through Gumroad, which pays out to a Bangladeshi bank account.)
 
 ## License
 
