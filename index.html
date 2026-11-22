@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>House Building Cost Estimator — Bangladesh | PWD SoR 2022 Rates</title>
+<meta name="description" content="Free house building cost estimator for Bangladesh. Itemized estimate with PWD Schedule of Rates 2022 (Dhaka) — RCC, brickwork, plaster, tiles, paint, doors, sanitary & electrical.">
+<style>
+  :root { --green:#0D3B2E; --gold:#D9C08A; --ink:#1c2b24; --muted:#5b6b62; --line:#e3e8e4; --bg:#f6f7f5; --card:#ffffff; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; }
+  header { background:var(--green); color:#fff; padding:34px 20px 28px; text-align:center; }
+  header h1 { font-size:clamp(22px,4vw,32px); line-height:1.25; }
+  header h1 span { color:var(--gold); }
+  header p { opacity:.9; max-width:640px; margin:10px auto 0; font-size:15px; }
+  .wrap { max-width:920px; margin:0 auto; padding:22px 16px 60px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:22px; margin-bottom:18px; }
+  .card h2 { font-size:18px; margin-bottom:14px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; }
+  label { display:block; font-size:13px; font-weight:600; color:var(--muted); margin-bottom:5px; }
+  input[type=number], select { width:100%; padding:10px 12px; border:1px solid #cfd8d2; border-radius:8px; font-size:16px; background:#fff; color:var(--ink); }
+  input[type=number]:focus, select:focus { outline:2px solid var(--green); outline-offset:1px; }
+  .seg { display:flex; gap:8px; flex-wrap:wrap; }
+  .seg button { flex:1; min-width:90px; padding:10px 8px; border:1.5px solid #cfd8d2; background:#fff; border-radius:8px; font-size:15px; cursor:pointer; color:var(--ink); }
+  .seg button.active { background:var(--green); border-color:var(--green); color:#fff; font-weight:600; }
+  .btn { display:inline-block; padding:12px 22px; border-radius:8px; border:none; font-size:16px; cursor:pointer; font-weight:600; }
+  .btn-primary { background:var(--green); color:#fff; }
+  .btn-ghost { background:#fff; border:1.5px solid #cfd8d2; color:var(--ink); }
+  .actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
+  table { width:100%; border-collapse:collapse; font-size:14.5px; }
+  th, td { padding:9px 8px; border-bottom:1px solid var(--line); text-align:left; }
+  th { font-size:12.5px; text-transform:uppercase; letter-spacing:.4px; color:var(--muted); }
+  td.num, th.num { text-align:right; white-space:nowrap; }
+  tr.total td { font-weight:700; font-size:16px; border-top:2px solid var(--green); border-bottom:none; }
+  .big { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:16px; }
+  .stat { background:var(--bg); border-radius:10px; padding:14px; text-align:center; }
+  .stat .v { font-size:24px; font-weight:800; color:var(--green); }
+  .stat .k { font-size:12.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; }
+  .note { font-size:13.5px; color:var(--muted); }
+  .note b { color:var(--ink); }
+  details { margin-top:10px; }
+  summary { cursor:pointer; font-weight:600; color:var(--green); }
+  .rates { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:10px; margin-top:12px; }
+  .rates div { display:flex; align-items:center; gap:8px; font-size:13.5px; }
+  .rates label { margin:0; flex:1; font-weight:500; color:var(--ink); }
+  .rates input { width:110px; padding:6px 8px; font-size:14px; }
+  .pill { display:inline-block; font-size:12px; background:#eef3ef; color:var(--green); border-radius:20px; padding:2px 10px; margin-left:6px; font-weight:600; }
+  footer { text-align:center; color:var(--muted); font-size:14px; padding:10px 16px 40px; }
+  footer a { color:var(--green); font-weight:600; text-decoration:none; }
+  footer a:hover { text-decoration:underline; }
+  .coffee { display:inline-block; margin-top:12px; background:#FFDD00; color:#000; font-weight:700; padding:10px 18px; border-radius:8px; text-decoration:none; font-size:15px; }
+  .hidden-print { display:block; }
+  @media (max-width:640px){ .card{padding:16px;} td.num,th.num{font-size:13px;} }
+  @media print{
+    header{padding:16px;} .hidden-print{display:none !important;}
+    body{background:#fff;} .card{border:1px solid #ccc; break-inside:avoid;}
+    .wrap{padding:0 8px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>🏠 House Building Cost Estimator <span>— Bangladesh</span></h1>
+  <p>Itemized construction cost estimate using <b>PWD Schedule of Rates 2022</b> (Dhaka). Enter your area, pick a finishing level, and get a transparent breakdown — every rate is editable.</p>
+</header>
+
+<div class="wrap">
+
+  <div class="card hidden-print">
+    <h2>Your building</h2>
+    <div class="grid">
+      <div>
+        <label for="area">Total built-up area (sq ft)</label>
+        <input type="number" id="area" value="2000" min="100" step="50">
+      </div>
+      <div>
+        <label for="floors">Number of floors</label>
+        <input type="number" id="floors" value="5" min="1" max="20" step="1">
+      </div>
+      <div>
+        <label for="location">Location (rate zone)</label>
+        <select id="location">
+          <option value="1.00" selected>Dhaka / Mymensingh</option>
+          <option value="0.99">Chattogram / Sylhet</option>
+          <option value="0.97">Khulna / Barishal / Gopalganj</option>
+          <option value="0.94">Rajshahi / Rangpur</option>
+        </select>
+      </div>
+      <div>
+        <label for="foundation">Foundation &amp; site work (lump sum, ৳)</label>
+        <input type="number" id="foundation" value="200000" min="0" step="10000">
+      </div>
+    </div>
+    <div style="margin-top:16px">
+      <label>Finishing level</label>
+      <div class="seg" id="finishSeg">
+        <button type="button" data-f="basic">Basic</button>
+        <button type="button" data-f="standard" class="active">Standard</button>
+        <button type="button" data-f="premium">Premium</button>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-primary" onclick="calculate()">Calculate estimate</button>
+      <button class="btn btn-ghost" onclick="window.print()">🖨️ Print / Save PDF</button>
+      <button class="btn btn-ghost" onclick="resetRates()">Reset rates</button>
+    </div>
+    <details>
+      <summary>Edit unit rates (৳) — all defaults are editable</summary>
+      <div class="rates" id="ratesBox"></div>
+      <p class="note" style="margin-top:10px">Rates marked <b>SoR</b> are from PWD Schedule of Rates 2022 (2nd Revised), Dhaka zone. Rates marked <b>market</b> are 2026 Dhaka market estimates — change them to your local quotation.</p>
+    </details>
+  </div>
+
+  <div class="card" id="resultCard" style="display:none">
+    <h2>Estimate breakdown <span class="pill" id="finishPill"></span></h2>
+    <div class="big">
+      <div class="stat"><div class="v" id="statTotal">—</div><div class="k">Total estimate</div></div>
+      <div class="stat"><div class="v" id="statPerSqft">—</div><div class="k">Cost per sq ft</div></div>
+      <div class="stat"><div class="v" id="statPerFloor">—</div><div class="k">Area per floor</div></div>
+    </div>
+    <table>
+      <thead><tr><th>Item</th><th class="num">Qty</th><th>Unit</th><th class="num">Rate (৳)</th><th class="num">Amount (৳)</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <p class="note" style="margin-top:14px" id="materialNote"></p>
+  </div>
+
+  <div class="card">
+    <h2>How this estimate works</h2>
+    <p class="note">
+      Quantities use standard thumb rules per sq ft of built-up area, shown in the table so you can check them:
+      concrete <b>0.045 cum</b>, steel <b>4 kg</b>, 125&nbsp;mm brickwork <b>0.167 sqm</b>, plaster <b>0.28 sqm</b>, floor area <b>0.093 sqm</b>.
+      Work-item rates come from <b>PWD SoR 2022</b> — RCC ৳16,192/cum, 125&nbsp;mm brickwork ৳1,411/sqm, 12&nbsp;mm plaster ৳324/sqm,
+      600×600 tiles ৳1,698/sqm, interior paint ৳265/sqm. Doors, windows, sanitary and electrical are composite market rates.
+      Location multipliers follow the SoR regional columns (Dhaka 1.00 → Rajshahi 0.94).
+    </p>
+    <p class="note" style="margin-top:8px"><b>Disclaimer:</b> a planning estimate only — not a quotation. Verify rates with a current market quotation and a structural design before budgeting.</p>
+  </div>
+
+</div>
+
+<footer>
+  Built by <a href="https://www.tantool.online/" target="_blank" rel="noopener">Tanmoy Hasan</a> — Sr. Executive Engineer (Civil), Evermark Ltd, Dhaka.<br>
+  Need a full BOQ? <a href="https://tantool.gumroad.com/l/djentn" target="_blank" rel="noopener">BOQ Template Pack on Gumroad</a> · More free tools at <a href="https://www.tantool.online/" target="_blank" rel="noopener">Tantool</a><br>
+  <a class="coffee" href="https://www.buymeacoffee.com/tanmoy016" target="_blank" rel="noopener">☕ Buy me a coffee</a>
+</footer>
+
+<script>
+// ---- Default rates (৳). SoR = PWD Schedule of Rates 2022, Dhaka zone. ----
+const DEFAULTS = {
+  rcc:        { label: "RCC concrete (SoR 07.7.1)",      rate: 16192, unit: "cum", src: "SoR" },
+  steel:      { label: "MS rod / deformed bar",          rate: 95,    unit: "kg",  src: "market" },
+  shuttering: { label: "Shuttering & labour (structure)", rate: 180,  unit: "sq ft", src: "market" },
+  brickwork:  { label: "125 mm brickwork (SoR 04.15)",   rate: 1411,  unit: "sqm", src: "SoR" },
+  plaster:    { label: "12 mm plaster 1:4 (SoR 15.1.1)", rate: 324,   unit: "sqm", src: "SoR" },
+  tiles:      { label: "Floor tiles 600×600 (SoR 06.1.4)", rate: 1698, unit: "sqm", src: "SoR" },
+  tilesBasic: { label: "Floor tiles — Basic level",      rate: 1200,  unit: "sqm", src: "market" },
+  tilesPrem:  { label: "Floor tiles — Premium (SoR 06.1.5)", rate: 3152, unit: "sqm", src: "SoR" },
+  paintInt:   { label: "Interior paint (SoR 16.2.1)",    rate: 265,   unit: "sqm", src: "SoR" },
+  paintExt:   { label: "Exterior paint (SoR 16.1.1)",    rate: 282,   unit: "sqm", src: "SoR" },
+  paintExtPrem:{ label:"Exterior paint — Premium (SoR 16.1.2)", rate: 307, unit: "sqm", src: "SoR" },
+  doors:      { label: "Doors & windows (composite)",    rate: 180,   unit: "sq ft", src: "market" },
+  sanitary:   { label: "Sanitary & plumbing (composite)",rate: 120,   unit: "sq ft", src: "market" },
+  electrical: { label: "Electrical (composite)",         rate: 110,   unit: "sq ft", src: "market" },
+  contingency:{ label: "Contingency (%)",                rate: 5,     unit: "%",   src: "" }
+};
+// Quantity of each item per 1 sq ft of built-up area
+const QTY = { rcc: 0.045, steel: 4, shuttering: 1, brickwork: 0.167, plaster: 0.28, tiles: 0.093, paintInt: 0.19, paintExt: 0.05, doors: 1, sanitary: 1, electrical: 1 };
+// Finishing-level rate overrides (multiplier on the market composite items)
+const FINISH = {
+  basic:    { label: "Basic",    tileKey: "tilesBasic", paintIntK: "paintInt", paintExtK: "paintExt", mult: 0.8 },
+  standard: { label: "Standard", tileKey: "tiles",      paintIntK: "paintInt", paintExtK: "paintExt", mult: 1.0 },
+  premium:  { label: "Premium",  tileKey: "tilesPrem",  paintIntK: "paintInt", paintExtK: "paintExtPrem", mult: 1.4 }
+};
+let finish = "standard";
+let rates = {};
+function loadDefaults(){ rates = {}; for (const k in DEFAULTS) rates[k] = DEFAULTS[k].rate; }
+
+function buildRatesBox(){
+  const box = document.getElementById("ratesBox");
+  box.innerHTML = "";
+  for (const k in DEFAULTS){
+    const d = DEFAULTS[k];
+    const div = document.createElement("div");
+    div.innerHTML = `<label for="r_${k}">${d.label} <span style="color:#888">(${d.src || "input"})</span></label>
+      <input type="number" id="r_${k}" value="${rates[k]}" min="0" step="1" onchange="rates['${k}']=+this.value||0">`;
+    box.appendChild(div);
+  }
+}
+function resetRates(){ loadDefaults(); buildRatesBox(); calculate(); }
+
+document.getElementById("finishSeg").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  document.querySelectorAll("#finishSeg button").forEach(x => x.classList.remove("active"));
+  b.classList.add("active"); finish = b.dataset.f; calculate();
+});
+["area","floors","location","foundation"].forEach(id =>
+  document.getElementById(id).addEventListener("change", calculate));
+
+const fmt = n => "৳" + Math.round(n).toLocaleString("en-IN");
+const fmtQty = n => (Math.round(n * 100) / 100).toLocaleString("en-IN");
+
+function calculate(){
+  const area = +document.getElementById("area").value || 0;
+  const floors = +document.getElementById("floors").value || 1;
+  const locMult = +document.getElementById("location").value || 1;
+  const foundation = +document.getElementById("foundation").value || 0;
+  const F = FINISH[finish];
+  if (!area) return;
+
+  // Work items: [label, qty, unit, rate]
+  const items = [
+    ["RCC concrete (frame, slabs, beams)", area * QTY.rcc, "cum", rates.rcc],
+    ["MS rod / deformed bar", area * QTY.steel, "kg", rates.steel],
+    ["Shuttering & labour (structure)", area * QTY.shuttering, "sq ft", rates.shuttering],
+    ["125 mm brickwork", area * QTY.brickwork, "sqm", rates.brickwork],
+    ["12 mm cement plaster (1:4)", area * QTY.plaster, "sqm", rates.plaster],
+    ["Floor tiles (" + F.label + ")", area * QTY.tiles, "sqm", rates[F.tileKey]],
+    ["Interior paint", area * QTY.paintInt, "sqm", rates[F.paintIntK]],
+    ["Exterior paint", area * QTY.paintExt, "sqm", rates[F.paintExtK]],
+    ["Doors & windows", area * QTY.doors, "sq ft", rates.doors * F.mult],
+    ["Sanitary & plumbing", area * QTY.sanitary, "sq ft", rates.sanitary * F.mult],
+    ["Electrical works", area * QTY.electrical, "sq ft", rates.electrical * F.mult]
+  ];
+
+  let subtotal = 0;
+  const rows = items.map(([label, qty, unit, rate]) => {
+    const amt = qty * rate * locMult;
+    subtotal += amt;
+    return `<tr><td>${label}</td><td class="num">${fmtQty(qty)}</td><td>${unit}</td><td class="num">${fmt(rate * locMult)}</td><td class="num">${fmt(amt)}</td></tr>`;
+  }).join("");
+  const contingency = subtotal * (rates.contingency / 100);
+  const total = subtotal + contingency + foundation;
+
+  document.getElementById("rows").innerHTML = rows +
+    `<tr><td>Subtotal (works)</td><td class="num" colspan="2"></td><td class="num"></td><td class="num">${fmt(subtotal)}</td></tr>
+     <tr><td>Contingency (${rates.contingency}%)</td><td class="num" colspan="2"></td><td class="num"></td><td class="num">${fmt(contingency)}</td></tr>
+     <tr><td>Foundation &amp; site work</td><td class="num" colspan="2"></td><td class="num"></td><td class="num">${fmt(foundation)}</td></tr>
+     <tr class="total"><td colspan="4">Total estimate</td><td class="num">${fmt(total)}</td></tr>`;
+
+  document.getElementById("statTotal").textContent = "৳" + (total / 100000).toFixed(1) + " lakh";
+  document.getElementById("statPerSqft").textContent = fmt(total / area) + " / sq ft";
+  document.getElementById("statPerFloor").textContent = fmtQty(area / floors) + " sq ft";
+  document.getElementById("finishPill").textContent = F.label + " finishing · " +
+    document.getElementById("location").selectedOptions[0].textContent;
+  document.getElementById("materialNote").innerHTML =
+    `<b>Approx. materials for this size:</b> cement ${fmtQty(area * 0.4)} bags · steel ${fmtQty(area * 4)} kg · ` +
+    `bricks ${fmtQty(area * 8)} nos · sand ${fmtQty(area * 0.6)} cft · brick aggregate ${fmtQty(area * 0.5)} cft. ` +
+    `Thumb rules only — confirm with your structural design.`;
+  document.getElementById("resultCard").style.display = "block";
+}
+
+loadDefaults();
+buildRatesBox();
+calculate();
+</script>
+</body>
+</html>
